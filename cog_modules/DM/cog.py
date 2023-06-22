@@ -6,8 +6,10 @@ from dotenv import load_dotenv
 load_dotenv()
 OH1 = int(os.getenv("OFFICE_HOURS_1"))
 OH2 = int(os.getenv("OFFICE_HOURS_2"))
+TEAMTEST = int(os.getenv("TEST_TEAM_CHANNEL"))
 InstructorLink = os.getenv("INSTRUCTOR_LINK")
 CamperLink = os.getenv("CAMPER_LINK")
+TeamLink = os.getenv("CAMPER_MEETING_LINK")
 botTesting = int(os.getenv("BOT_TESTING_CHANNEL"))
 botDMs = int(os.getenv("BOT_DM_CHANNEL"))
 botID = int(os.getenv("BOT_USER_ID"))
@@ -49,6 +51,12 @@ class DirectMessage(commands.Cog):
                     await member.send("Hi there, it looks like you just finished getting help from the instructors in the #office-hours-2 channel.")
                     await member.send(f"Please fill out this form so we know how well we helped you: {CamperLink}")
                     await member.send("Thank you!")
+            elif channel.id == TEAMTEST:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting.")
+                    await member.send(f"Please fill out this form so we know how it went: {TeamLink}")
+                    await member.send("Thank you!")
+
 
     # Checks to see if someone DMs the bot
     # If so, it forwards the message to a specific channel and replies to the
