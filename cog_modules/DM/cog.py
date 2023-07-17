@@ -7,12 +7,19 @@ load_dotenv()
 OH1 = int(os.getenv("OFFICE_HOURS_1"))
 OH2 = int(os.getenv("OFFICE_HOURS_2"))
 TEAMTEST = int(os.getenv("TEST_TEAM_CHANNEL"))
+TEAMONE = int(os.getenv("TEAM_ONE"))
+TEAMTWO = int(os.getenv("TEAM_TWO"))
+TEAMTHREE = int(os.getenv("TEAM_THREE"))
+TEAMFOUR = int(os.getenv("TEAM_FOUR"))
+TEAMFIVE = int(os.getenv("TEAM_FIVE"))
 InstructorLink = os.getenv("INSTRUCTOR_LINK")
 CamperLink = os.getenv("CAMPER_LINK")
 TeamLink = os.getenv("CAMPER_MEETING_LINK")
 botTesting = int(os.getenv("BOT_TESTING_CHANNEL"))
 botDMs = int(os.getenv("BOT_DM_CHANNEL"))
 botID = int(os.getenv("BOT_USER_ID"))
+TEAM_INSTRUCTOR = os.getenv("TEAM_INSTRUCTOR_LINK")
+TEAM_CAMPER = os.getenv("TEAM_CAMPER_LINK")
 
 class DirectMessage(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -38,6 +45,31 @@ class DirectMessage(commands.Cog):
                     await member.send("Hi there, it looks like you just finished an Office Hours session in the #office-hours-2 channel.")
                     await member.send(f"Please fill out this form to record your session: {InstructorLink}")
                     await member.send("Thank you!")
+            elif channel.id == TEAMONE:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting with Team 1.")
+                    await member.send(f"Please fill out this form to record your session: {TEAM_INSTRUCTOR}")
+                    await member.send("Thank you!")
+            elif channel.id == TEAMTWO:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting with Team 2.")
+                    await member.send(f"Please fill out this form to record your session: {TEAM_INSTRUCTOR}")
+                    await member.send("Thank you!")
+            elif channel.id == TEAMTHREE:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting with Team 3.")
+                    await member.send(f"Please fill out this form to record your session: {TEAM_INSTRUCTOR}")
+                    await member.send("Thank you!")
+            elif channel.id == TEAMFOUR:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting with Team 4.")
+                    await member.send(f"Please fill out this form to record your session: {TEAM_INSTRUCTOR}")
+                    await member.send("Thank you!")
+            elif channel.id == TEAMFIVE:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting with Team 5.")
+                    await member.send(f"Please fill out this form to record your session: {TEAM_INSTRUCTOR}")
+                    await member.send("Thank you!")
 
         # If the member has the `Camper` role
         if campRole is not None and campRole.name == "Camper":
@@ -51,10 +83,30 @@ class DirectMessage(commands.Cog):
                     await member.send("Hi there, it looks like you just finished getting help from the instructors in the #office-hours-2 channel.")
                     await member.send(f"Please fill out this form so we know how well we helped you: {CamperLink}")
                     await member.send("Thank you!")
-            elif channel.id == TEAMTEST:
+            elif channel.id == TEAMONE:
                 if before.channel is not None and after.channel is None: # after leaving the voice channel
                     await member.send("Hi there, it looks like you just finished a team meeting.")
-                    await member.send(f"Please fill out this form so we know how it went: {TeamLink}")
+                    await member.send(f"Please fill out this form so we know how it went: {TEAM_CAMPER}")
+                    await member.send("Thank you!")
+            elif channel.id == TEAMTWO:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting.")
+                    await member.send(f"Please fill out this form so we know how it went: {TEAM_CAMPER}")
+                    await member.send("Thank you!")
+            elif channel.id == TEAMTHREE:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting.")
+                    await member.send(f"Please fill out this form so we know how it went: {TEAM_CAMPER}")
+                    await member.send("Thank you!")
+            elif channel.id == TEAMFOUR:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting.")
+                    await member.send(f"Please fill out this form so we know how it went: {TEAM_CAMPER}")
+                    await member.send("Thank you!")
+            elif channel.id == TEAMFIVE:
+                if before.channel is not None and after.channel is None: # after leaving the voice channel
+                    await member.send("Hi there, it looks like you just finished a team meeting.")
+                    await member.send(f"Please fill out this form so we know how it went: {TEAM_CAMPER}")
                     await member.send("Thank you!")
 
 
